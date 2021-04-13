@@ -36,7 +36,6 @@ export default {
         this.$root.$data.user = null;
       } catch (error) {
         this.$root.$data.user = null;
-        console.log("Error in Admin.vue logout()");
       }
     },
     async getTickets() {
@@ -45,7 +44,7 @@ export default {
         this.tickets = response.data.tickets;
         return true;
       } catch (error) {
-        console.log("Error in Admin.vue getTickets()");
+        // eslint-disable-next-line no-console
         console.log(error);
       }
     },

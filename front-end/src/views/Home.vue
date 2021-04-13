@@ -24,7 +24,6 @@ export default {
       this.$root.$data.user = response.data.user;
     } catch (error) {
       this.$root.$data.user = null;
-      console.log("Error in Home.vue created()");
     }
   },
   computed: {

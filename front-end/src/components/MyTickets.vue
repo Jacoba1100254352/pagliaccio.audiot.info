@@ -50,7 +50,6 @@ export default {
         this.$root.$data.user = null;
       } catch (error) {
         this.$root.$data.user = null;
-        console.log("Error in MyTickets.vue logout()");
       }
     },
     async getTickets() {
@@ -59,7 +58,7 @@ export default {
         this.tickets = response.data.tickets;
         return true;
       } catch (error) {
-        console.log("Error in MyTickets.vue getTickets()");
+        // eslint-disable-next-line no-console
         console.log(error);
       }
     },
@@ -85,7 +84,7 @@ export default {
         await this.getTickets();
         return true;
       } catch (error) {
-        console.log("Error in MyTickets.vue addTicket()");
+        // eslint-disable-next-line no-console
         console.log(error);
       }
     }
