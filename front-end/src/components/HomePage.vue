@@ -68,7 +68,6 @@ export default {
       } catch (error) {
         this.error = error.response.data.message;
         this.$root.$data.user = null;
-        console.log("Error in HomePage.vue register()");
       }
     },
     async login() {

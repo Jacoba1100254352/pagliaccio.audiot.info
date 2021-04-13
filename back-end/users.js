@@ -31,7 +31,6 @@ userSchema.pre('save', async function(next) {
         this.password = hash;
         next();
     } catch (error) {
-        console.log("Error in users.js userScheme.pre()");
         console.log(error);
         next(error);
     }
@@ -48,7 +47,6 @@ userSchema.methods.comparePassword = async function(password) {
         const isMatch = await argon2.verify(this.password, password);
         return isMatch;
     } catch (error) {
-        console.log("Error in users.js userScheme.methods.comparePassword()");
         return false;
     }
 };
@@ -86,7 +84,6 @@ const validUser = async (req, res, next) => {
         // set the user field in the request
         req.user = user;
     } catch (error) {
-        console.log("Error in users.js validUser");
         // Return an error if user does not exist.
         return res.status(403).send({
             message: "not logged in"
@@ -139,7 +136,6 @@ router.post('/', async (req, res) => {
             user: user
         });
     } catch (error) {
-        console.log("Error in users.js router.post()");
         console.log(error);
         return res.sendStatus(500);
     }
@@ -176,7 +172,6 @@ router.post('/login', async (req, res) => {
             user: user
         });
     } catch (error) {
-        console.log("Error in users.js router.post()");
         console.log(error);
         return res.sendStatus(500);
     }
@@ -189,7 +184,6 @@ router.get('/', validUser, async (req, res) => {
             user: req.user
         });
     } catch (error) {
-        console.log("Error in users.js router.get()");
         console.log(error);
         return res.sendStatus(500);
     }
@@ -201,7 +195,6 @@ router.delete("/", validUser, async (req, res) => {
         req.session = null;
         res.sendStatus(200);
     } catch (error) {
-        console.log("Error in users.js router.delete()");
         console.log(error);
         return res.sendStatus(500);
     }

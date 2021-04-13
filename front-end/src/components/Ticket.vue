@@ -40,7 +40,6 @@ export default {
         this.ticket = response.data.ticket;
       } catch (error) {
         this.error = error.response.message;
-        console.log("Error in Ticket.vue respond()");
       }
     }
   }
